@@ -1,0 +1,119 @@
+Git Hub Workflow:-
+
+# Make changes in dev
+git add .
+git commit -m "Describe your changes"
+git push origin dev
+
+# Pull latest from main before starting new dev work
+git checkout main
+git pull origin main
+git checkout dev
+git merge main
+
+
+1️⃣ Everyone clones the repository
+
+Each developer will clone the repo to their local machine:
+
+git clone https://github.com/RajaRaj420/brain_tumor_RRM.git
+cd brain_tumor_RRM
+
+2️⃣ Set up branches for collaboration
+
+main → Always production-ready.
+
+dev → Integration branch; everyone pushes feature branches here first.
+
+feature/<feature-name> → Each developer creates their own branch for a specific task.
+
+Example:
+
+# Make sure you are on dev
+git checkout dev
+git pull origin dev
+
+# Create a personal feature branch
+git checkout -b feature/mri-upload-handler
+
+3️⃣ Work locally
+
+Make code changes, add new files, edit SRS/docs, etc.
+
+Commit frequently with clear messages:
+
+git add .
+git commit -m "Add MRI upload validation API"
+
+4️⃣ Push your feature branch to GitHub
+git push -u origin feature/mri-upload-handler
+
+
+The -u sets the upstream, so next time you can just do git push.
+
+5️⃣ Open a Pull Request (PR)
+
+Go to your GitHub repo.
+
+You’ll see your branch has been pushed and GitHub suggests opening a PR.
+
+Set base branch = dev and compare branch = your feature branch.
+
+Add reviewers, assign labels, and submit the PR.
+
+6️⃣ Code Review & Testing
+
+Reviewers look at the code and leave comments.
+
+Changes can be requested and re-pushed to the same feature branch.
+
+Once approved, merge the PR into dev, not main.
+
+7️⃣ Integration Testing on dev
+
+Other developers pull the updated dev branch locally:
+
+git checkout dev
+git pull origin dev
+
+
+They can test integration with their local setup.
+
+8️⃣ Merging dev into main
+
+After dev is stable and passes tests, create a PR:
+
+base branch = main
+compare branch = dev
+
+
+After review and approval, merge to main.
+
+Optionally, tag a release on main for production-ready snapshots.
+
+9️⃣ Daily workflow summary per developer
+git checkout dev
+git pull origin dev           # update dev
+
+git checkout -b feature/<name>
+# do work, commit changes
+git push -u origin feature/<name>
+
+# open PR to dev on GitHub
+# review/merge
+
+✅ Tips for Smooth Multi-Developer Workflow
+
+Never push directly to main. Always use feature/<name> → dev → main.
+
+Pull frequently: Avoid conflicts by pulling dev before starting new features.
+
+Use descriptive commit messages: Helps reviewers understand changes.
+
+Use GitHub token for HTTPS auth: Each dev generates their own fine-grained token.
+
+Optional: Enable branch protection on main and dev in GitHub settings:
+
+Require PR review before merging
+
+Require status checks (tests)
