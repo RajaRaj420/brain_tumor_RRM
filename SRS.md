@@ -174,7 +174,7 @@ Result OR Safe Rejection
 | :--- | :--- |
 | **MRI Validation**            | EfficientNet-B0/B1 |
 | **Body-Part Classification**  | EfficientNet-B3/B4 |
-| **Diagnosis**                 | EfficientNet-B4/B5 |
+| **Diagnosis**                 | DenseNet169 |
 | **Explainability**            | Grad-CAM |
 
 ---
